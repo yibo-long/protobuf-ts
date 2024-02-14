@@ -101,7 +101,8 @@ export class TypeScriptImports {
         let lookupPath = pathToImportFrom;
         while (lookupPath != '.') {
             if (this.externPathMap.has(lookupPath)) {
-                return this.externPathMap.get(lookupPath)!;
+                const relativePath = pathToImportFrom.replace(/\.[a-z]+$/, '');
+                return path.join(this.externPathMap.get(lookupPath)!, relativePath);
             }
             lookupPath = path.dirname(lookupPath);
         }

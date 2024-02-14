@@ -1,0 +1,6 @@
+syntax = "proto3";
+package io.foo.foo2;
+
+message Bar2 {
+  string name = 1;
+}

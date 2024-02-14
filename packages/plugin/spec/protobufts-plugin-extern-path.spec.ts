@@ -55,7 +55,10 @@ describe('protobuftsPluginExternPath', function () {
             if (!externPackage) {
                 fail('msg-extern-package.proto not generated');
             }
-            if (!externPackage!.getContent().includes('import { Bar } from "@io/foo";')) {
+            if (!externPackage!.getContent().includes('import { Bar } from "@io/foo/io/foo/bar";')) {
+                fail('msg-extern-package.proto does not import external message io.foo.Bar');
+            }
+            if (!externPackage!.getContent().includes('import { Bar2 } from "@io/foo/io/foo/foo2/bar2";')) {
                 fail('msg-extern-package.proto does not import external message io.foo.Bar');
             }
         });
