@@ -112,6 +112,7 @@ export abstract class PluginBase<T extends GeneratedFile = GeneratedFile> {
         let given: Map<string, boolean|string> = parameter ?
             parameter.split(',').reduce((map, param) => {
                 const [key, value] = param.split('=', 2);
+                console.log('key', key, 'value', value);
                 // Treat missing value as boolean flag as true.
                 return map.set(key, value ?? true);
             }, new Map<string, boolean|string>()) :
